@@ -33,7 +33,7 @@ class HomeScreen extends React.Component {
 
     // Sends the user to the app store to rate the app
     // TODO need to update this to new link
-    rateApp = () => {
+    rateApp = async () => {
         Linking.openURL('https://apps.apple.com/us/app/celsius-safe-crypto-platform/id1387885523');
     }
 

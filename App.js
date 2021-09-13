@@ -81,7 +81,6 @@ class App extends React.Component {
     await Asset.loadAsync([
       require('./assets/circle.png'),
       require('./assets/main.png'),
-      require('./assets/neighborIcon.png')
     ]);
 
     // Loads all the fonts

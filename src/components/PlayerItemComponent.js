@@ -15,22 +15,6 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
         deletePlayer(index)
     }
 
-    // Gets the correct container color for even / odd
-    const containerStyle = (val) => {
-        // Even number
-        if (val % 2 == 0) {
-            return {
-                backgroundColor: Color.MAIN,
-                opacity: .8
-            }
-        } else {
-            return {
-                backgroundColor: Color.MAIN,
-                opacity: .8
-            }
-        }
-    }
-
     // Checks whether the player has already clicked a score
     const isDone = () => {
         if (player.status) {
@@ -58,7 +42,12 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
                     placeholderTextColor="rgba(255,255,255,0.2)" 
                     onChangeText={(text) => setName(text, index)} />
                     <Text style={styles.score}>{player.score}</Text>
-                    <Text style={styles.prev}>Prev: {player.history[round - 1].score}  |  Current: {player.score - player.history[round - 1].score}</Text>
+                    {
+                        player.history[round - 1] !== null
+                        ? <Text style={styles.prev}>Prev: {player.history[round - 1].score}  |  Current: {player.score - player.history[round - 1].score}</Text>
+                        : null
+                    }
+                    
                 </View>
     }
 
@@ -91,14 +80,14 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
     // Renders both the text input part and score part together and adds add new player to last one
     const renderComponent = () => {
         if (index !== lastIndex) {
-            return <View style={[styles.container, containerStyle(index)]}>
+            return <View style={[styles.container]}>
                         {renderTextInput()}
                         {renderScoreBox()}
                     </View>
         }
         else {
             return <>
-                    <View style={[styles.container, containerStyle(index)]}>
+                    <View style={[styles.container]}>
                         {renderTextInput()}
                         {renderScoreBox()}
                     </View>
