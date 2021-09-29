@@ -6,7 +6,7 @@ import CircleComponent from '../components/CircleComponent'
 import GameHeaderComponent from '../components/GameHeaderComponent'
 import PlayerItemComponent from '../components/PlayerItemComponent'
 import SimpleModalComponent from '../components/SimpleModalComponent'
-import { AdMobInterstitial } from 'expo-ads-admob';
+// import { AdMobInterstitial } from 'expo-ads-admob';
 
 class GameScreen extends React.Component {
 
@@ -126,9 +126,10 @@ class GameScreen extends React.Component {
     // Displays the full screen ad
     displayAd = async () => {
         // Display an interstitial (Change to ca-app-pub-1470582515457694/1731364666 for prod)
-        await AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/4411468910'); // Test ID, Replace with your-admob-unit-id
-        await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true});
-        await AdMobInterstitial.showAdAsync();
+        // await AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/4411468910'); // Test ID, Replace with your-admob-unit-id
+        // await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true});
+        // await AdMobInterstitial.showAdAsync();
+        console.log("show ad")
     }
 
     // Sends user to the history page

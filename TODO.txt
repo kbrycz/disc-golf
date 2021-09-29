@@ -1,0 +1,3 @@
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-1470582515457694~7534355686"
+      }
