@@ -30,8 +30,6 @@ const HistoryPlayerNameComponent = ({player, index, navigation}) => {
             }
             <AntDesign name="right" style={styles.icon} />
         </TouchableOpacity>
-
-        
     )
 }
 

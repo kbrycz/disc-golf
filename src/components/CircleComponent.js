@@ -3,6 +3,7 @@ import {View, StyleSheet, Image, Dimensions} from 'react-native'
 
 const CircleComponent = ({isWhite}) => {
 
+    /// Sets the opacity of the circle depending on if color is white
     const imageSize = () => {
         if (isWhite) {
             return {

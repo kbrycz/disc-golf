@@ -20,27 +20,26 @@ const QuitModalComponent = ({modalVisible, setModalVisible, restart, quit}) => {
                 setModalVisible(!modalVisible);
                 }}>
                 <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                    <TouchableOpacity
-                    style={styles.button}
-                    onPress={restartFirst}
-                    >
-                        <Text style={styles.textStyle}>Restart</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                    style={styles.button}
-                    onPress={quit}
-                    >
-                        <Text style={styles.textStyle}>Quit</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                    style={styles.button2}
-                    onPress={() => setModalVisible(!modalVisible)}
-                    >
-                        <Text style={styles.textStyle2}>Close</Text>
-                    </TouchableOpacity>
-
-                </View>
+                  <View style={styles.modalView}>
+                      <TouchableOpacity
+                      style={styles.button}
+                      onPress={restartFirst}
+                      >
+                          <Text style={styles.textStyle}>Restart</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                      style={styles.button}
+                      onPress={quit}
+                      >
+                          <Text style={styles.textStyle}>Quit</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                      style={styles.button2}
+                      onPress={() => setModalVisible(!modalVisible)}
+                      >
+                          <Text style={styles.textStyle2}>Close</Text>
+                      </TouchableOpacity>
+                  </View>
                 </View>
             </Modal>
     );

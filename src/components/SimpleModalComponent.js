@@ -14,15 +14,15 @@ const SimpleModalComponent = ({modalVisible, setModalVisible, text, buttonText})
             setModalVisible(!modalVisible);
             }}>
             <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-                <Text style={styles.modalText}>{text}</Text>
-                <TouchableOpacity
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
-                >
-                    <Text style={styles.textStyle}>{buttonText}</Text>
-                </TouchableOpacity>
-            </View>
+              <View style={styles.modalView}>
+                  <Text style={styles.modalText}>{text}</Text>
+                  <TouchableOpacity
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setModalVisible(!modalVisible)}
+                  >
+                      <Text style={styles.textStyle}>{buttonText}</Text>
+                  </TouchableOpacity>
+              </View>
             </View>
         </Modal>
   );

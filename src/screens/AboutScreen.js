@@ -19,11 +19,10 @@ class AboutScreen extends React.Component {
                 <Text style={styles.version}>1.0.0</Text>
                 <Text style={styles.p}>Alligator Games LLC is a Chicago based company specializing in party games. Our mission
                                         is to bring joy to our users through group party games. </Text>
-                <Text style={styles.p}>"Disc Golf Score Keeper" is our third game to be released to the app store! 
-                                        To view more of our work, check out our website: alligator.games!</Text>
+                <Text style={styles.p}>"Disc Golf - Score Keeper" is our first game to be released to the app store! 
+                                        To view more of our work, check out our website: https://alligator.games!</Text>
                 <Text style={styles.p}>More games are on the way! Keep an eye out for our releases!</Text>
             </View>
-            
         )
     }
 }

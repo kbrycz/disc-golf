@@ -20,24 +20,23 @@ const DeleteUserModalComponent = ({modalVisible, setModalVisible, name, deletePl
             setModalVisible(!modalVisible);
             }}>
             <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-                <Text style={styles.modalText}>Are you sure you would like to remove {name !== '' ? name : "this player"} from the game?</Text>
-                <View style={{flexDirection: 'row'}}>
-                  <TouchableOpacity
-                  style={[styles.button, styles.buttonClose1]}
-                  onPress={() => setModalVisible(!modalVisible)}
-                  >
-                      <Text style={styles.textStyle1}>Cancel</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                  style={[styles.button, styles.buttonClose2]}
-                  onPress={runFunc}
-                  >
-                      <Text style={styles.textStyle2}>Remove</Text>
-                  </TouchableOpacity>
-                </View>
-               
-            </View>
+              <View style={styles.modalView}>
+                  <Text style={styles.modalText}>Are you sure you would like to remove {name !== '' ? name : "this player"} from the game?</Text>
+                  <View style={{flexDirection: 'row'}}>
+                    <TouchableOpacity
+                    style={[styles.button, styles.buttonClose1]}
+                    onPress={() => setModalVisible(!modalVisible)}
+                    >
+                        <Text style={styles.textStyle1}>Cancel</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                    style={[styles.button, styles.buttonClose2]}
+                    onPress={runFunc}
+                    >
+                        <Text style={styles.textStyle2}>Remove</Text>
+                    </TouchableOpacity>
+                  </View>
+              </View>
             </View>
         </Modal>
   );
