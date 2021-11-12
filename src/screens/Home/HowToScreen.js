@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, StyleSheet, ScrollView, Dimensions, Image, Text} from 'react-native'
-import CircleComponent from '../components/CircleComponent'
-import * as Color from '../../global/Color'
+import CircleComponent from '../../components/CircleComponent'
+import * as Color from '../../../global/Color'
 
 class HowToScreen extends React.Component {
 

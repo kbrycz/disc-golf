@@ -1,9 +1,9 @@
 import React from 'react'
 import {View, StyleSheet, Text, Dimensions, TouchableOpacity, Share, Linking, Image} from 'react-native'
-import * as Color from '../../global/Color'
+import * as Color from '../../../global/Color'
 import { Feather } from '@expo/vector-icons'; 
-import SimpleModalComponent from '../components/SimpleModalComponent'
-import CircleComponent from '../components/CircleComponent';
+import SimpleModalComponent from '../../components/SimpleModalComponent'
+import CircleComponent from '../../components/CircleComponent';
 
 class HomeScreen extends React.Component {
 
@@ -49,14 +49,14 @@ class HomeScreen extends React.Component {
         return (
             <View style={styles.background}>
                 <CircleComponent isWhite={false} />
-                <Text style={styles.headerText}>Disc Golf Score Keeper</Text>
+                <Text style={styles.headerText}>Disc Golf - All in One</Text>
                 <View>
                     <Image
                         style={styles.image} 
-                        source={require('../../assets/main.png')}
+                        source={require('../../../assets/main.png')}
                         />
                 </View>
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Game')}>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Type')}>
                     <Text style={styles.buttonText}>Play</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.howToPlay} onPress={() => this.props.navigation.navigate('How')}>

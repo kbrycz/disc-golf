@@ -1,8 +1,8 @@
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity, Dimensions, FlatList, SafeAreaView} from 'react-native'
-import * as Color from '../../global/Color'
-import CircleComponent from '../components/CircleComponent'
-import HistoryPlayerScoreComponent from '../components/HistoryPlayerScoreComponent'
+import * as Color from '../../../global/Color'
+import CircleComponent from '../../components/CircleComponent'
+import HistoryPlayerScoreComponent from '../../components/HistoryPlayerScoreComponent'
 
 
 class HistoryPlayerScreen extends React.Component {

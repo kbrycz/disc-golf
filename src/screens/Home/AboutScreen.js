@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity, Dimensions} from 'react-native'
-import * as Color from '../../global/Color'
-import CircleComponent from '../components/CircleComponent'
+import * as Color from '../../../global/Color'
+import CircleComponent from '../../components/CircleComponent'
 
 class AboutScreen extends React.Component {
 

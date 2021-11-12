@@ -1,11 +1,11 @@
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity, Dimensions, SafeAreaView, KeyboardAvoidingView, ScrollView} from 'react-native'
-import * as Color from '../../global/Color'
-import AddPlayerComponent from '../components/AddPlayerComponent'
-import CircleComponent from '../components/CircleComponent'
-import GameHeaderComponent from '../components/GameHeaderComponent'
-import PlayerItemComponent from '../components/PlayerItemComponent'
-import SimpleModalComponent from '../components/SimpleModalComponent'
+import * as Color from '../../../global/Color'
+import AddPlayerComponent from '../../components/AddPlayerComponent'
+import CircleComponent from '../../components/CircleComponent'
+import GameHeaderComponent from '../../components/GameHeaderComponent'
+import PlayerItemComponent from '../../components/PlayerItemComponent'
+import SimpleModalComponent from '../../components/SimpleModalComponent'
 import { AdMobInterstitial } from 'expo-ads-admob';
 
 class GameScreen extends React.Component {
@@ -15,12 +15,16 @@ class GameScreen extends React.Component {
         this.state = {
             players: [],
             round: 1,
-            modalVisible: false
+            modalVisible: false,
+            location: ""
         }
     }
 
     componentDidMount() {
         this.addNewPlayer()
+        if (this.props.route.params) {
+            this.setState({location: this.props.route.params.location})
+        }
     }
 
     // Sets the simple modal to be on or off

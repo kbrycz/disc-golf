@@ -7,6 +7,16 @@ const GameHeaderComponent = ({quit, restart, round, next, goToHistory}) => {
 
     const [modalVisible, setModalVisible] = React.useState(false)
 
+    const tempRestart = () => {
+        setModalVisible(false)
+        restart()
+    }
+
+    const tempQuit = () => {
+        setModalVisible(false)
+        quit()
+    }
+
     return (
         <>
             <View style={styles.container}>
@@ -21,7 +31,7 @@ const GameHeaderComponent = ({quit, restart, round, next, goToHistory}) => {
                 </TouchableOpacity>
             </View>
             <Text style={styles.round}>Hole {round}</Text>
-            <QuitModalComponent modalVisible={modalVisible} setModalVisible={setModalVisible} quit={quit} restart={restart} />
+            <QuitModalComponent modalVisible={modalVisible} setModalVisible={setModalVisible} quit={tempQuit} restart={tempRestart} />
         </>
     )
 }
