@@ -16,6 +16,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import AppLoading from 'expo-app-loading';
 import SoloScreen from './src/screens/Game/SoloScreen';
 import LocationScreen from './src/screens/Home/LocationScreen';
+import PreviousGameScreen from './src/screens/Home/PreviousGameScreen';
+import GameHistoryScreen from './src/screens/Home/GameHistoryScreen';
 
 
 // Creates stack for the Home screens
@@ -95,6 +97,21 @@ const HistoryStack = () => {
   )
 }
 
+// Creates stack for the History screens
+const Previous = createStackNavigator();
+const PreviousStack = () => {
+  return (
+    <Previous.Navigator 
+        initialRouteName="PreviousScreen"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Previous.Screen name="PreviousScreen" component={PreviousGameScreen} />
+        <Previous.Screen name="PreviousHistory" component={GameHistoryScreen} />
+    </Previous.Navigator>
+  )
+}
+
 
 const RootStack = createStackNavigator();
 
@@ -169,6 +186,7 @@ class App extends React.Component {
                 gestureEnabled: false,
               }}>
               <RootStack.Screen name='Home' component={HomeStack} />
+              <RootStack.Screen name='Previous' component={PreviousStack} />
               <RootStack.Screen name='Type' component={GameTypeStack} />
               <RootStack.Screen name='Solo' component={SoloStack} />
               <RootStack.Screen name='Game' component={GameStack} />

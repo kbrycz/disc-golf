@@ -59,19 +59,25 @@ class HomeScreen extends React.Component {
                 <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Type')}>
                     <Text style={styles.buttonText}>Play</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.howToPlay} onPress={() => this.props.navigation.navigate('Previous')}>
+                    <Text style={styles.howToPlayText}>History</Text>
+                </TouchableOpacity>
                 <TouchableOpacity style={styles.howToPlay} onPress={() => this.props.navigation.navigate('How')}>
                     <Text style={styles.howToPlayText}>How to Play</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.howToPlay} onPress={() => this.props.navigation.navigate('About')}>
+                    <Text style={styles.howToPlayText}>About</Text>
+                </TouchableOpacity>
                 <View style={styles.iconView}>
-                    <TouchableOpacity onPress={this.shareButton}>
+                    {/* <TouchableOpacity onPress={this.shareButton}>
                         <Feather name="share-2" style={styles.icon} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={this.rateApp}>
                         <Feather name="star" style={styles.icon}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('About')}>
+                    </TouchableOpacity> */}
+                    {/* <TouchableOpacity onPress={() => this.props.navigation.navigate('About')}>
                         <Feather name="info" style={styles.icon}/>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
                 <SimpleModalComponent modalVisible={this.state.modalVisible} 
                                       setModalVisible={this.setModalVisible} 
@@ -99,14 +105,14 @@ const styles = StyleSheet.create({
         fontFamily: 'BalsamiqSans'
     },
     image: {
-        height: Dimensions.get('window').height * .25,
+        height: Dimensions.get('window').height * .2,
         width: Dimensions.get('window').width * .5,
         marginHorizontal: Dimensions.get('window').width * .25,
         marginVertical: Dimensions.get('window').height * .07,
         resizeMode: 'contain'
     },
     buttonText: {
-        fontSize: Dimensions.get('window').height * .035,
+        fontSize: Dimensions.get('window').height * .032,
         textAlign: 'center',
         color: Color.MAIN,
         fontFamily: 'BalsamiqSans'
@@ -123,7 +129,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     howToPlayText: {
-        fontSize: Dimensions.get('window').height * .027,
+        fontSize: Dimensions.get('window').height * .022,
         textAlign: 'center',
         color: '#fff',
         fontFamily: 'BalsamiqSans'

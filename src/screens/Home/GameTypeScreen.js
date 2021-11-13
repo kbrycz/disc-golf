@@ -20,13 +20,13 @@ class GameTypeScreen extends React.Component {
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('Main')} >
                         <Ionicons name="arrow-back-sharp" style={styles.back} />
                     </TouchableOpacity>
-                    <Text style={styles.headerText}>What would you like to do?</Text>
+                    <Text style={styles.headerText}>How would you like to play?</Text>
 
                     <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Location', {isSolo: true})}>
-                        <Text style={styles.buttonText}>Solo Play</Text>
+                        <Text style={styles.buttonText}>Solo</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Location', {isSolo: false})}>
-                        <Text style={styles.buttonText}>Competitive Play</Text>
+                        <Text style={styles.buttonText}>Group</Text>
                     </TouchableOpacity>
                 </SafeAreaView>
             </View>
@@ -60,19 +60,18 @@ const styles = StyleSheet.create({
         fontFamily: 'BalsamiqSans'
     },
     buttonText: {
-        fontSize: Dimensions.get('window').height * .03,
+        fontSize: Dimensions.get('window').height * .07,
         textAlign: 'center',
         color: Color.MAIN,
         fontFamily: 'BalsamiqSans',
-        lineHeight: Dimensions.get('window').height * .06,
     },
     button: {
-        width: Dimensions.get('window').width * .7,
-        marginLeft: Dimensions.get('window').width * .15,
-        marginRight: Dimensions.get('window').width * .15,
-        marginBottom: Dimensions.get('window').height * .03,
+        width: Dimensions.get('window').width * .8,
+        marginLeft: Dimensions.get('window').width * .1,
+        marginRight: Dimensions.get('window').width * .1,
+        marginBottom: Dimensions.get('window').height * .06,
         backgroundColor: '#fff',
-        paddingVertical: Dimensions.get('window').width * .09,
+        paddingVertical: Dimensions.get('window').width * .04,
         paddingHorizontal: Dimensions.get('window').width * .07,
         borderWidth: 4,
         borderColor: Color.MAIN,

@@ -7,6 +7,9 @@ import GameHeaderComponent from '../../components/GameHeaderComponent'
 import PlayerItemComponent from '../../components/PlayerItemComponent'
 import SimpleModalComponent from '../../components/SimpleModalComponent'
 import { AdMobInterstitial } from 'expo-ads-admob';
+import SaveGameConfirmComponent from '../../components/SaveGameConfirmComponent'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import uuid from 'react-native-uuid'
 
 class SoloScreen extends React.Component {
 
@@ -18,7 +21,9 @@ class SoloScreen extends React.Component {
             modalVisible: false,
             history: [{score: 0, round: 0, prev: 0}],
             hasPutInScore: false,
-            location: ""
+            location: "",
+            hasSaved: false,
+            saveModalVisible: false
         }
     }
 
@@ -43,7 +48,8 @@ class SoloScreen extends React.Component {
             round: 1,
             modalVisible: false,
             history: [{score: 0, round: 0, prev: 0}],
-            hasPutInScore: false
+            hasPutInScore: false,
+            hasSaved: false
         })
     }
 
@@ -72,8 +78,40 @@ class SoloScreen extends React.Component {
     }
 
     // Saves the stats of the user to async storage
-    saveStats = () => {
+    saveScore = async () => {
+        this.setState({hasSaved: true})
+        let history = this.state.history
+        if (this.state.hasPutInScore) {
+            let historyObj = {score: this.state.score, round: this.state.round, prev: this.state.history[this.state.round - 1].score}
+            history.push(historyObj)
+        }
+        let date = new Date()
+        let game = {
+            id: uuid.v4(),
+            date: date.getMonth() + "/" + date.getDay() + '/' + (date.getFullYear().toString().slice(2)),
+            location: this.state.location === "" ? "Unknown" : this.state.location,
+            score: this.state.score,
+            history: history
+        }
         console.log("saving stats")
+
+        try {
+            let stats = await AsyncStorage.getItem('playerStats');
+            if (stats === null){
+               let games = []
+               games.push(game)
+               await AsyncStorage.setItem("playerStats", JSON.stringify(games))
+            }
+            else {
+                let statsList = JSON.parse(stats)
+                statsList.push(game)
+                await AsyncStorage.removeItem('playerStats')
+                await AsyncStorage.setItem("playerStats", JSON.stringify(statsList))
+           }
+         } 
+         catch (error) {
+           console.log("unable to save data")
+         }
     }
 
     // Displays the full screen ad
@@ -103,6 +141,11 @@ class SoloScreen extends React.Component {
                 opacity: .8
             }
         }
+    }
+
+    // Set save modal visible
+    setSaveModalVisible = (isVis) => {
+        this.setState({saveModalVisible: isVis})
     }
 
     render() {
@@ -140,10 +183,15 @@ class SoloScreen extends React.Component {
                         ?  <Text style={styles.location2}>Unknown</Text>
                         :  <Text style={styles.location2}>{this.state.location}</Text>
                     }
-                   
-                    <TouchableOpacity style={styles.button} onPress={this.saveStats}>
-                        <Text style={styles.buttonText}>Save Game</Text>
-                    </TouchableOpacity>
+                   {
+                       !this.state.hasSaved
+                       ? <TouchableOpacity style={styles.button} onPress={() => this.setSaveModalVisible(true)}>
+                            <Text style={styles.buttonText}>Save Game</Text>
+                        </TouchableOpacity>
+                       : <Text style={styles.saved}>Game has been saved</Text>
+                   }
+
+                    <SaveGameConfirmComponent modalVisible={this.state.saveModalVisible} setModalVisible={this.setSaveModalVisible} saveGame={this.saveScore} />
                     <SimpleModalComponent modalVisible={this.state.modalVisible} 
                                       setModalVisible={this.setModalVisible} 
                                       text={"Make sure you update your score first!"} buttonText={'OK'} />
@@ -240,6 +288,12 @@ const styles = StyleSheet.create({
         borderColor: Color.MAIN,
         borderRadius: 20,
     },
+    saved: {
+        fontSize: Dimensions.get('window').height * .02,
+        textAlign: 'center',
+        color: '#fff',
+        fontFamily: 'BalsamiqSans'
+    }
 })
 
 export default SoloScreen

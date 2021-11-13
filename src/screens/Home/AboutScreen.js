@@ -16,12 +16,13 @@ class AboutScreen extends React.Component {
             <View>
                 <CircleComponent isWhite={true}/>
                 <Text style={styles.headerText}>About</Text>
-                <Text style={styles.version}>1.0.0</Text>
-                <Text style={styles.p}>Alligator Games LLC is a Chicago based company specializing in party games. Our mission
-                                        is to bring joy to our users through group party games. </Text>
-                <Text style={styles.p}>"Disc Golf - Score Keeper" is our first game to be released to the app store! 
-                                        To view more of our work, check out our website: https://alligator.games!</Text>
-                <Text style={styles.p}>More games are on the way! Keep an eye out for our releases!</Text>
+                <Text style={styles.version}>1.0.1</Text>
+                <Text style={styles.p}>Alligator Games LLC is a Chicago based company specializing in multiplayer games. Our mission
+                                        is to bring joy to our users through group party games.</Text>
+                <Text style={styles.p}>"Disc Golf - All in One" is an app we made to help you organize your disc golf games!
+                                        Not every party game has to be indoors! It's good to get outside every now and then! 
+                                        Use this app for all your disc golfing needs!</Text>
+                <Text style={styles.p}>Keep a look out for more of our releases! Check out our website: https://alligator.games!</Text>
             </View>
         )
     }

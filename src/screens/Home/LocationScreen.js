@@ -99,9 +99,9 @@ const styles = StyleSheet.create({
         fontFamily: 'BalsamiqSans'
     },
     button: {
-        width: Dimensions.get('window').width * .7,
-        marginLeft: Dimensions.get('window').width * .15,
-        marginRight: Dimensions.get('window').width * .15,
+        width: Dimensions.get('window').width * .8,
+        marginLeft: Dimensions.get('window').width * .1,
+        marginRight: Dimensions.get('window').width * .1,
         marginBottom: Dimensions.get('window').height * .03,
         backgroundColor: '#fff',
         paddingVertical: Dimensions.get('window').width * .03,
@@ -119,9 +119,10 @@ const styles = StyleSheet.create({
         fontSize: Dimensions.get('window').height * .03,
         letterSpacing: 5,
         textAlign: 'center',
-        borderRadius: 10,
+        borderRadius: 20,
         paddingTop: Dimensions.get('window').height * .02,
         paddingBottom: Dimensions.get('window').height * .02,
+        paddingHorizontal: Dimensions.get('window').width * .03,
         fontFamily: 'BalsamiqSans',
         backgroundColor: '#fff'
     },

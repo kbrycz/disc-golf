@@ -4,9 +4,10 @@ import * as Color from '../../global/Color'
 import { Feather } from '@expo/vector-icons'; 
 import DeleteUserModalComponent from './DeleteUserModalComponent';
 import AddPlayerComponent from './AddPlayerComponent';
+import SaveScoreComponent from './SaveScoreComponent';
 
 
-const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, scoreChange, round, deletePlayer}) => {
+const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, scoreChange, round, deletePlayer, saveScore, players}) => {
 
     const [modalVisible, setModalVisible] = React.useState(false)
 
@@ -94,7 +95,7 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
                     {
                         round === 1
                         ? <AddPlayerComponent addNewPlayer={addNewPlayer} />
-                        : null
+                        : <SaveScoreComponent saveScore={saveScore} players={players} />
                     }
             </>
         }
@@ -102,7 +103,7 @@ const PlayerItemComponent = ({player, index, addNewPlayer, lastIndex, setName, s
 
     return (
         <View>
-            <TouchableOpacity style={styles.iconContainer} onPress={() => { setModalVisible(true) }}>
+            <TouchableOpacity style={styles.iconContainer} onPress={() => setModalVisible(true)}>
                 <Feather name="x" style={styles.icon} />
             </TouchableOpacity>
             {renderComponent()}

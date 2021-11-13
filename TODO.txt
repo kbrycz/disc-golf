@@ -1,11 +1,2 @@
 *************TODO********************
-
-- Add save game button to the bottom of the game list when all players have been added and game has started for competitive
-
-- Create player history page for home screen
-- Save the players:
-    date
-    location
-    score
-
-- Add save game functionality to the solo and game screens
+- Be able to delete games from history

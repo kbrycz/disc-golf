@@ -7,6 +7,9 @@ import GameHeaderComponent from '../../components/GameHeaderComponent'
 import PlayerItemComponent from '../../components/PlayerItemComponent'
 import SimpleModalComponent from '../../components/SimpleModalComponent'
 import { AdMobInterstitial } from 'expo-ads-admob';
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useLinkBuilder } from '@react-navigation/native'
+import uuid from 'react-native-uuid'
 
 class GameScreen extends React.Component {
 
@@ -150,6 +153,53 @@ class GameScreen extends React.Component {
         this.setState({players: tempPlayers})
     }
 
+    // Saves the stats of the user to async storage
+    saveScore = async (id) => {
+        let player = null
+        for (let i = 0; i < this.state.players.length; ++i) {
+            if (this.state.players[i].id === id) {
+                player = this.state.players[i]
+            }
+        }
+        if (!player) {
+            console.log("unable to save player stats")
+            return
+        }
+        this.setState({hasSaved: true})
+        let history = player.history
+        if (player.status) {
+            let historyObj = {score: player.score, round: this.state.round, prev: player.history[this.state.round - 1].score}
+            history.push(historyObj)
+        }
+        let date = new Date()
+        let game = {
+            id: uuid.v4(),
+            date: date.getMonth() + "/" + date.getDay() + '/' + (date.getFullYear().toString().slice(2)),
+            location: this.state.location === "" ? "Unknown" : this.state.location,
+            score: player.score,
+            history: history
+        }
+        console.log("saving stats")
+
+        try {
+            let stats = await AsyncStorage.getItem('playerStats');
+            if (stats === null){
+               let games = []
+               games.push(game)
+               await AsyncStorage.setItem("playerStats", JSON.stringify(games))
+            }
+            else {
+                let statsList = JSON.parse(stats)
+                statsList.push(game)
+                await AsyncStorage.removeItem('playerStats')
+                await AsyncStorage.setItem("playerStats", JSON.stringify(statsList))
+           }
+         } 
+         catch (error) {
+           console.log("unable to save data")
+         }
+    }
+
     render() {
         return (
             <View style={styles.background}>
@@ -162,7 +212,8 @@ class GameScreen extends React.Component {
                             this.state.players.length > 0
                             ? this.state.players.map((player, index) => {
                                 return <PlayerItemComponent key={index} player={player} index={index} lastIndex={this.state.players.length - 1} round={this.state.round}
-                                    addNewPlayer={this.addNewPlayer} setName={this.setName} scoreChange={this.scoreChange} deletePlayer={this.deletePlayer}/>
+                                    addNewPlayer={this.addNewPlayer} setName={this.setName} scoreChange={this.scoreChange} deletePlayer={this.deletePlayer} saveScore={this.saveScore} 
+                                    players={this.state.players} />
                             })
                             : <AddPlayerComponent addNewPlayer={this.addNewPlayer} />
                         }
