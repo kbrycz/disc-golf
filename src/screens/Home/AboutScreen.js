@@ -16,7 +16,7 @@ class AboutScreen extends React.Component {
             <View>
                 <CircleComponent isWhite={true}/>
                 <Text style={styles.headerText}>About</Text>
-                <Text style={styles.version}>1.0.1</Text>
+                <Text style={styles.version}>1.0.2</Text>
                 <Text style={styles.p}>Alligator Games LLC is a Chicago based company specializing in multiplayer games. Our mission
                                         is to bring joy to our users through group party games.</Text>
                 <Text style={styles.p}>"Disc Golf - All in One" is an app we made to help you organize your disc golf games!
